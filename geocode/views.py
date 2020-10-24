@@ -76,8 +76,8 @@ class GPSView(View):
     @atomic
     def post(self, request, *args, **kwargs):
         form_data = json.loads(request.body.decode())
-        uuid, date, address, city, state, zip_code = form_data['uuid'], form_data['date'], form_data['address'], form_data['city'], form_data['state'], form_data['zip_code']
-        g = GPS(uuid=uuid, date=date, address=address, city=city, state=state, zip_code=zip_code)
+        uuid, address, city, state, zip_code = form_data['uuid'], form_data['address'], form_data['city'], form_data['state'], form_data['zip_code']
+        g = GPS(uuid=uuid, address=address, city=city, state=state, zip_code=zip_code)
         g.save()
         return HttpResponse(status=200)
 
@@ -97,7 +97,7 @@ class SymptomsView(View):
     @atomic
     def post(self, request, *args, **kwargs):
         form_data = json.loads(request.body.decode())
-        uuid, date, score, close_contact = form_data['uuid'], form_data['date'], form_data['score'], form_data['close_contact']
-        s = Symptoms(uuid=uuid, date=date, score=score, close_contact=close_contact)
+        uuid, score, close_contact = form_data['uuid'], form_data['score'], form_data['close_contact']
+        s = Symptoms(uuid=uuid, score=score, close_contact=close_contact)
         s.save()
         return HttpResponse(status=200)
