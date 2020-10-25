@@ -14,7 +14,7 @@ Post http://18.222.146.208/gps/
     "address":"<string>",
     "city":"<string>",
     "state":"<string>",
-    "zip_code":<int>
+    "zip_code":"<string>"
 }
 ```
 ```
