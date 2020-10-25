@@ -4,13 +4,13 @@
 ```
 Post http://18.222.146.208/user/
 {
-"uuid":<int>
+"uuid":"<uuid4>"
 }
 ```
 ```
 Post http://18.222.146.208/gps/
 {
-    "uuid":<int>,
+    "uuid":"<uuid4>",
     "address":"<string>",
     "city":"<string>",
     "state":"<string>",
@@ -20,7 +20,7 @@ Post http://18.222.146.208/gps/
 ```
 Post http://18.222.146.208/gps/
 {
-    "uuid":<int>,
+    "uuid":"<uuid4>",
     "score":<int>,
     "close_contact":<boolean>
 }
@@ -38,10 +38,10 @@ Post http://18.222.146.208/at_risk/
 
 
 ```
-Get http://18.222.146.208/gps/<uuid>/
+Get http://18.222.146.208/gps/<uuid4>/
 ```
 ```
-Get http://18.222.146.208/symptoms/<uuid>/
+Get http://18.222.146.208/symptoms/<uuid4>/
 ```
 ```
 Get http://18.222.146.208/at_risk/<address>/<zip_code>
@@ -51,10 +51,10 @@ Get http://18.222.146.208/at_risk/<address>/<zip_code>
 ## Schema:
 ```
 user:
-    column uuid INT32 UNIQUE NOT NULL
+    column uuid UUID4 UNIQUE NOT NULL
 
 gps:
-    column uuid INT32 NOT NULL,
+    column uuid UUID4 NOT NULL,
     column date DATE NOT NULL,
     column address VARCHAR(50),
     column city VARCHAR(25) NOT NULL,
@@ -62,7 +62,7 @@ gps:
     column zip VARCHAR(20) NOT NULL
 
 symptoms:
-    column uuid INT32 NOT NULL,
+    column uuid UUID4 NOT NULL,
     column date DATE NOT NULL,
     column score INT8 NOT NULL,
     column close_contact BOOLEAN NOT NULL
