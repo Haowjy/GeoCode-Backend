@@ -1,5 +1,6 @@
 # GeoCode-Backend
 
+django app build by following: https://www.cockroachlabs.com/docs/v20.1/build-a-python-app-with-cockroachdb-django
 ## API:
 ```
 Post http://18.222.146.208/user/
