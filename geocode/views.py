@@ -101,3 +101,22 @@ class SymptomsView(View):
         s = Symptoms(uuid=uuid, score=score, close_contact=close_contact)
         s.save()
         return HttpResponse(status=200)
+
+
+@method_decorator(csrf_exempt, name='dispatch')
+class AtRiskView(View):
+    def get(self, request, address, zip_code, *args, **kwargs):
+        if address is None:
+            return JsonResponse({'invalid get':address+' '+zip_code})
+        else:
+            at_risk = list(AtRisk.objects.filter(address=address,zip_code=zip_code).values())
+        return JsonResponse(at_risk, safe=False)
+
+    @retry_on_exception(3)
+    @atomic
+    def post(self, request, *args, **kwargs):
+        form_data = json.loads(request.body.decode())
+        address, city, state, zip_code, risk_level = form_data['address'], form_data['city'], form_data['state'], form_data['zip_code'], form_data['risk_level']
+        r = AtRisk(address=address, city=city, state=state, zip_code=zip_code, risk_level=risk_level)
+        r.save()
+        return HttpResponse(status=200)

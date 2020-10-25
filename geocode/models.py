@@ -19,3 +19,11 @@ class Symptoms(models.Model):
 
 class Users(models.Model):
     uuid = models.IntegerField(unique=True, blank=False, null=False)
+
+class AtRisk(models.Model):
+    date = models.DateField(auto_now_add=True)
+    address = models.CharField(max_length=50, blank=False, null=False)
+    city = models.CharField(max_length=25, blank=False, null=False)
+    state = models.CharField(max_length=2, blank=False, null=False)
+    zip_code = models.CharField(max_length=20, blank=False, null=False)
+    risk_level = models.IntegerField(validators=[MaxValueValidator(3)])

@@ -16,7 +16,7 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from .views import UsersView, GPSView, SymptomsView, PingView
+from .views import UsersView, GPSView, SymptomsView, AtRiskView, PingView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -34,4 +34,8 @@ urlpatterns = [
     # Endpoints for symptoms URL.
     path('symptoms/', SymptomsView.as_view(), name='symptoms'),
     path('symptoms/<int:uuid>/', SymptomsView.as_view(), name='symptoms'),
+
+    # Endpoints for at risk area URL.
+    path('at_risk/', AtRiskView.as_view(), name='at_risk'),
+    path('at_risk/<str:address>/<str:zip_code>/', AtRiskView.as_view(), name='at_risk'),
     ]
