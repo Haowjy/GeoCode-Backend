@@ -25,15 +25,15 @@ urlpatterns = [
 
     # Endpoints for users URL.
     path('user/', UsersView.as_view(), name='users'),
-    path('user/<int:uuid>/', UsersView.as_view(), name='users'),
+    path('user/<uuid:uuid>/', UsersView.as_view(), name='users'),
 
     # Endpoints for gps URL.
     path('gps/', GPSView.as_view(), name='gps'),
-    path('gps/<int:uuid>/', GPSView.as_view(), name='gps'),
+    path('gps/<uuid:uuid>/', GPSView.as_view(), name='gps'),
 
     # Endpoints for symptoms URL.
     path('symptoms/', SymptomsView.as_view(), name='symptoms'),
-    path('symptoms/<int:uuid>/', SymptomsView.as_view(), name='symptoms'),
+    path('symptoms/<uuid:uuid>/', SymptomsView.as_view(), name='symptoms'),
 
     # Endpoints for at risk area URL.
     path('at_risk/', AtRiskView.as_view(), name='at_risk'),
